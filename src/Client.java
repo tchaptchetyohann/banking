@@ -16,6 +16,10 @@ public class Client {
 
     }
     public void login(){
+        System.out.println("Enter your name");
+        this.name=scan.nextLine();
+        System.out.println("Enter your password");
+        this.password=scan.nextLine();
 
     }
     public void register(){
@@ -23,8 +27,11 @@ public class Client {
 
         System.out.println("Enter your name");
         this.name=scan.nextLine();
+        System.out.println("Enter your password");
         this.password=scan.nextLine();
+        System.out.println("Enter your emailaddress");
         this.emailadresse=scan.nextLine();
+        System.out.println("Enter your phonenumber");
         this.phonenumber=scan.nextLine();
 
     }
