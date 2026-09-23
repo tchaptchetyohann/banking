@@ -16,6 +16,8 @@ public class Client {
 
     }
     public void login(){
+        Scanner scan= new Scanner(System.in);
+
         System.out.println("Enter your name");
         this.name=scan.nextLine();
         System.out.println("Enter your password");
