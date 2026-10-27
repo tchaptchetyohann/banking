@@ -7,7 +7,7 @@ public class Transactions {
     String initiator;
     @Override
     public String toString(){
-        return "transaction name: "+name+ "Amount: "+amount+ "Date: "+date;
+        return "transaction name: "+name+ " Amount: $"+amount+ " Date: "+date;
     }
 
 }
