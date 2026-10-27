@@ -6,7 +6,8 @@ import java.util.*;
 void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
     // to see how IntelliJ IDEA suggests fixing it.
     Scanner scan = new Scanner(System.in);
-    Scanner scanne = new Scanner(System.in);
+
+
     Client user = new Client();
     String name = "";
     String password;
@@ -16,6 +17,8 @@ void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/
     ArrayList<Client> clients = new ArrayList<>();
     ArrayList<Account> accounts = new ArrayList<>();
     String accountname = "";
+    Transactions transaction=new Transactions();
+
     do {
         int selection;
         System.out.println("---------------------------------Banking APP---------------------------------");
@@ -24,6 +27,9 @@ void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/
 
         System.out.print("ENTER THE SELECTED OPTION:_ ");
         selection = scan.nextInt();
+        scan.nextLine(); // Consume the leftover newline
+
+
         Client person1 = new Client();
         if (selection == 2) {
 
@@ -36,21 +42,21 @@ void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/
             }
 
         }
-        System.out.println("now you can login");
+        System.out.println("now you can login\n");
 
         System.out.println("Enter your name");
-        name = scanne.nextLine();
+        name = scan.nextLine();
 
         System.out.println("Enter your password");
-        password = scanne.nextLine();
+        password = scan.nextLine();
 
         user = person1.login(name, password, clients);
 
-        System.out.println("Welcome " + user.name + "");
+        System.out.println("Welcome " + user.name );
         do {
             System.out.println("***********/////  Menu ////************");
 
-            System.out.println("\n\t1. View details of account \n\t2. Deposite funds \n\t3. Change account type \n\t4. Change personal infomation \n\t5.Open new account \n\t6. Logout");
+            System.out.println("\n\t1. View details of account \n\t2. Deposite funds \n\t3. Change account type \n\t4. Change personal infomation \n\t5.Open new account \n\t6. Make a transaction \n\t7. View transactions \n\t8. Logout");
 
             System.out.print("Please Enter you selection with the right number: ");
 
@@ -59,28 +65,63 @@ void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/
             switch (menuSelection) {
                 case 1:
                     System.out.println("account");
+
+                    user.viewaccount(user.name,accounts);
                     break;
                 case 2:
                     System.out.println("Deposit funds");
+                    System.out.println("Enter the desire value you want to deposit");
+                    int x =scan.nextInt();
+                    user.depositfunds(user.name,accounts,x);
                     break;
                 case 3:
-                    System.out.println("Change account type");
+                    System.out.println("Update Bank type");
+                    user.updatebankaccount(user.name,accounts);
                     break;
                 case 4:
-                    System.out.println("Change personnal information");
+
+                    user.updateaccount(user.name,clients);
                     break;
 
                 case 5:
                     System.out.println("Enter the name of the account");
+                    scan.nextLine();
+                    accountname = scan.nextLine();
 
-                    accountname = scanne.nextLine();
-
-                    user.openaccount(accountname, user.name);
+                  accounts.add(user.openaccount(accountname, user.name));
                     break;
 
                 case 6:
+                    if(accountname.isEmpty()){
+                        System.out.println("Account list is empty you need to open an account");
+                    }
+                    else{
+                        for(Account account:accounts){
+                            if(account.owner.equals(user.name) ){
+                                transaction= user.maketransaction(user.name, account);
+                                if(transaction !=null ){
+                                    account.banktransactions.add(transaction);
+                                }
+
+                            }
+                            else{
+                                System.out.println("Do not have a valid account");
+
+                            }
+                        }
+                    }
+
+                    break;
+                case 7:
+                    for(Account account:accounts){
+                        account.showTransactions(account.banktransactions);
+                    }
+                    
+                    break;
+                case 8:
                     loginmenu=true;
                     break;
+
 
 
             }
