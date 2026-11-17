@@ -1,0 +1,12 @@
+**********************......BANK STATEMENT.....*******************-------------------------------------------------------------------Account Owner: samuel
+--------------------------------------------------------------------Email adresse: sam@gmail.com
+--------------------------------------------------------------------Phone number: 254879845
+--------------------------------------------------------------------
+ 
+ ACCOUNT BALANCE:90.0--------------------------------------------------------------------
+ TRANSACTIONStransaction name: 	 Amount: $20.0	 Date: 2026-11-17
+transaction name: 	 Amount: $20.0	 Date: 2026-11-17
+transaction name: starbucks	 Amount: $60.0	 Date: 2026-11-17
+transaction name: starbucks	 Amount: $60.0	 Date: 2026-11-17
+transaction name: winners	 Amount: $30.0	 Date: 2026-11-17
+transaction name: winners	 Amount: $30.0	 Date: 2026-11-17

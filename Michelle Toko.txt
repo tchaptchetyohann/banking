@@ -1,0 +1,19 @@
+**********************......BANK STATEMENT.....*******************
+-------------------------------------------------------------------
+Account Owner: Michelle Toko
+--------------------------------------------------------------------
+ Email adresse: tokomichelle@yahoo.fr
+--------------------------------------------------------------------
+Phone number: 22650378
+--------------------------------------------------------------------
+
+ 
+ ACCOUNT BALANCE:1946500.0--------------------------------------------------------------------
+
+ TRANSACTIONS
+transaction name: 	 Amount: $50000.0	 Date: 2026-11-17
+transaction name: 	 Amount: $50000.0	 Date: 2026-11-17
+transaction name: Mazda cx3	 Amount: $3000.0	 Date: 2026-11-17
+transaction name: Mazda cx3	 Amount: $3000.0	 Date: 2026-11-17
+transaction name: sac coach	 Amount: $500.0	 Date: 2026-11-17
+transaction name: sac coach	 Amount: $500.0	 Date: 2026-11-17
