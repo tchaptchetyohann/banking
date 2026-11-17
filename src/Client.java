@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 import java.time.LocalDate;
 
@@ -181,5 +184,38 @@ public class Client {
     public String toString(){
         return "Name: " + name + "\n Email: " + emailadresse;
 
+    }
+
+    public void generateStatement(String name,ArrayList<Account>accounts){
+        File myFile = new File(name+".txt");
+        try(FileWriter writer = new FileWriter(myFile)){
+            for(Account account:accounts){
+                if(account.owner.equals(name)){
+                    writer.write("**********************......BANK STATEMENT.....*******************\n");
+                    writer.write("-------------------------------------------------------------------\n");
+                    writer.write("Account Owner: "+account.owner+"\n");
+                    writer.write("--------------------------------------------------------------------\n ");
+                    writer.write("Email adresse: "+emailadresse+"\n");
+                    writer.write("--------------------------------------------------------------------\n");
+                    writer.write("Phone number: "+phonenumber+"\n");
+                    writer.write("--------------------------------------------------------------------\n");
+
+                    writer.write("\n \n ACCOUNT BALANCE:"+account.getBalance());
+
+                    writer.write("--------------------------------------------------------------------\n");
+
+                    writer.write("\n TRANSACTIONS\n");
+                    for(Transactions transaction:account.banktransactions){
+                        writer.write(String.valueOf(transaction)+"\n");
+                    }
+
+                }
+            }
+
+        }
+        catch (IOException e){
+            System.out.println("An error occur");
+
+        }
     }
 }

@@ -1,6 +1,9 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
-public class Account {
+public class Account  {
     String nameaccount;
     private double balance;
     String status;
@@ -13,6 +16,8 @@ public class Account {
         System.out.println(list);
     }
     }
+
+
     public void addTransactions(Transactions transaction){
 this.banktransactions.add(transaction);
     }

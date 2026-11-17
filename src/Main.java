@@ -1,9 +1,13 @@
 import java.util.*;
+import java.io.IOException;
+import java.io.File;
+import java.io.FileWriter;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+void main(String[] args) throws IOException
+{//TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
     // to see how IntelliJ IDEA suggests fixing it.
     Scanner scan = new Scanner(System.in);
 
@@ -24,10 +28,17 @@ void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/
         System.out.println("---------------------------------Banking APP---------------------------------");
         System.out.println("\n--------------------------- WELCOME TO BANKING APP-------------------------- \n********************************************************************************** \n----------------------PLEASE MAKE YOUR SELECTION BELOW-------------------------- ");
         System.out.println("\n\t 1. LOGIN\n\t 2.REGISTER");
-
+        do{
         System.out.print("ENTER THE SELECTED OPTION:_ ");
         selection = scan.nextInt();
-        scan.nextLine(); // Consume the leftover newline
+        scan.nextLine();
+        // Consume the leftover newline
+        if(selection!=1 || selection!=2){
+            System.out.println("Please enter a valid number ");
+
+        }
+        }
+        while (selection!=1 || selection !=2);
 
 
         Client person1 = new Client();
@@ -56,11 +67,21 @@ void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/
         do {
             System.out.println("***********/////  Menu ////************");
 
-            System.out.println("\n\t1. View details of account \n\t2. Deposite funds \n\t3. Change account type \n\t4. Change personal infomation \n\t5.Open new account \n\t6. Make a transaction \n\t7. View transactions \n\t8. Logout");
+            System.out.println("\n\t1. View details of account \n\t2. Deposite funds \n\t3. Change account type \n\t4. Change personal infomation \n\t5.Open new account \n\t6. Make a transaction \n\t7. View transactions \n\t8. Daily statements  \n\t9. Logout");
 
-            System.out.print("Please Enter you selection with the right number: ");
+            do {
 
-            menuSelection = scan.nextInt();
+                System.out.print("Please Enter you selection with the right number: ");
+
+                menuSelection = scan.nextInt();
+
+                if (menuSelection<1||menuSelection>9){
+
+                    System.out.println("Please enter a valid number ");
+
+                }
+            }
+            while(menuSelection<1||menuSelection>9 );
 
             switch (menuSelection) {
                 case 1:
@@ -119,7 +140,12 @@ void main(String[] args) {//TIP Press <shortcut actionId="ShowIntentionActions"/
                     
                     break;
                 case 8:
-                    loginmenu=true;
+                  user.generateStatement(user.name,accounts);
+
+
+                    break;
+                case 9:
+                    loginmenu=false;
                     break;
 
 
