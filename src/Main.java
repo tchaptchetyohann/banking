@@ -33,12 +33,12 @@ void main(String[] args) throws IOException
         selection = scan.nextInt();
         scan.nextLine();
         // Consume the leftover newline
-        if(selection!=1 || selection!=2){
+        if(selection!=1 && selection!=2){
             System.out.println("Please enter a valid number ");
 
         }
         }
-        while (selection!=1 || selection !=2);
+        while (selection!=1 && selection !=2);
 
 
         Client person1 = new Client();
@@ -67,7 +67,7 @@ void main(String[] args) throws IOException
         do {
             System.out.println("***********/////  Menu ////************");
 
-            System.out.println("\n\t1. View details of account \n\t2. Deposite funds \n\t3. Change account type \n\t4. Change personal infomation \n\t5.Open new account \n\t6. Make a transaction \n\t7. View transactions \n\t8. Daily statements  \n\t9. Logout");
+            System.out.println("\n\t1. View details of account \n\t2. Deposite funds \n\t3. Change account type \n\t4. Change personal infomation \n\t5. Open new account \n\t6. Make a transaction \n\t7. View transactions \n\t8. Daily statements  \n\t9. Logout");
 
             do {
 
@@ -85,15 +85,11 @@ void main(String[] args) throws IOException
 
             switch (menuSelection) {
                 case 1:
-                    System.out.println("account");
 
                     user.viewaccount(user.name,accounts);
                     break;
                 case 2:
-                    System.out.println("Deposit funds");
-                    System.out.println("Enter the desire value you want to deposit");
-                    int x =scan.nextInt();
-                    user.depositfunds(user.name,accounts,x);
+                    user.depositfunds(user.name,accounts);
                     break;
                 case 3:
                     System.out.println("Update Bank type");
@@ -113,24 +109,8 @@ void main(String[] args) throws IOException
                     break;
 
                 case 6:
-                    if(accountname.isEmpty()){
-                        System.out.println("Account list is empty you need to open an account");
-                    }
-                    else{
-                        for(Account account:accounts){
-                            if(account.owner.equals(user.name) ){
-                                transaction= user.maketransaction(user.name, account);
-                                if(transaction !=null ){
-                                    account.banktransactions.add(transaction);
-                                }
-
-                            }
-                            else{
-                                System.out.println("Do not have a valid account");
-
-                            }
-                        }
-                    }
+                   // transaction=
+                    user.maketransaction(user.name, accounts);
 
                     break;
                 case 7:

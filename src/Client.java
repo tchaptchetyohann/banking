@@ -16,28 +16,31 @@ public class Client {
         return x;
     }
 
-    public Transactions maketransaction(String initiator,Account account){
-        Transactions transaction= new Transactions();
-        System.out.print("Enter the compapnies name: ");
-        scan.nextLine();
-        String name=scan.nextLine();
-        System.out.println("Enter the amount of transaction");
-        double amount=scan.nextDouble();
-        LocalDate dates = LocalDate.now();
-        double difference= account.getBalance()-amount;
-        if(difference<=0){
-            System.out.println("There no Sufficient funds");
-            return null;
+    public void maketransaction(String initiator,ArrayList<Account> accounts){
+        for(Account account:accounts){
+            if(account.owner.equals(initiator)){
+                Transactions transaction= new Transactions();
+                System.out.print("Enter the compapnies name: ");
+                scan.nextLine();
+                String name=scan.nextLine();
+                System.out.println("Enter the amount of transaction");
+                double amount=scan.nextDouble();
+                LocalDate dates = LocalDate.now();
+                double difference= account.getBalance()-amount;
+                if(difference<=0){
+                    System.out.println("There no Sufficient funds");
+                }
+                else{
+                    account.setBalance(difference);
+                    transaction.name=name;
+                    transaction.amount=amount;
+                    transaction.initiator=initiator;
+                    transaction.date=dates;
+                    account.addTransactions(transaction);
+                }
+            }
         }
-        else{
-            account.setBalance(difference);
-            transaction.name=name;
-            transaction.amount=amount;
-            transaction.initiator=initiator;
-            transaction.date=dates;
-            account.banktransactions.add(transaction);
-            return transaction;
-        }
+
 
 
     }
@@ -165,10 +168,22 @@ public class Client {
            }
        }
     }
-    public void depositfunds(String name,ArrayList<Account>accounts,double amount){
+    public void depositfunds(String name,ArrayList<Account>accounts){
+        LocalDate dates = LocalDate.now();
+
         for(Account account:accounts){
             if(account.owner.equals(name)){
-                account.updatebalance(amount);
+                Transactions transactions=new Transactions();
+                System.out.println("Deposit funds");
+                System.out.println("Enter the desire value you want to deposit");
+                double x =scan.nextDouble();
+                account.updatebalance(x);
+
+                transactions.amount=x;
+                transactions.name="DEPOSITE";
+                transactions.date=dates;
+
+                account.banktransactions.add(transactions);
 
                 System.out.println("Funds deposited successfully");
 
@@ -180,11 +195,7 @@ public class Client {
         }
     }
 
-    @Override
-    public String toString(){
-        return "Name: " + name + "\n Email: " + emailadresse;
 
-    }
 
     public void generateStatement(String name,ArrayList<Account>accounts){
         File myFile = new File(name+".txt");
@@ -217,5 +228,11 @@ public class Client {
             System.out.println("An error occur");
 
         }
+    }
+
+    @Override
+    public String toString(){
+        return "Name: " + name + "\n Email: " + emailadresse;
+
     }
 }
